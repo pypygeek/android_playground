@@ -5,10 +5,11 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    var placelist: Array<Place>? = null    // Place 객체들의 배열
+    var placeset : MutableList<Place>? = null   // 변경 가능한 리스트 객체
     val photo = arrayOf(R.drawable.tour1, R.drawable.tour2, R.drawable.tour3, R.drawable.tour5,
         R.drawable.tour6, R.drawable.tour7, R.drawable.tour8, R.drawable.tour9, R.drawable.tour10)
-
-    val places = arrayOf(arrayOf("경복궁", "서울특별시 종로구 세종로 사직로 161",
+    val places: Array<Array<Any>> = arrayOf(arrayOf("경복궁", "서울특별시 종로구 세종로 사직로 161",
         "박물관과 정원이 있는 거대한 14세기 왕궁이며 무료 가이드 투어가 제공됩니다.", photo[0]),
         arrayOf("남산타워", "서울특별시 용산구 용산2가동 남산공원길 105",
             "1980년에 문을 연 이 상징적인 타워는 도심의 탁 트인 전망을 자랑하며 회전식 레스토랑을 이용할 수 있습니다.", photo[1]),
@@ -24,16 +25,36 @@ class MainActivity : AppCompatActivity() {
         arrayOf("창덕궁", "서울특별시 종로구 서린동 청계천로 1",
             "책로, 다리, 녹지가 있는 휴식 공간으로 개울 주변으로 복원공사가 이루어졌습니다.", photo[8])
     )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         // 1) 데이터 소스 = place 배열
+        setPlaces()
         // 2) 어댑터 객체 생성
-        val adapter = ItemAdapter(this, places as Array<Array<Any>>)
-        // 3) recyclerview 객체 참조 후 어댑터 등록하기
+        //val adapter = ItemAdapter(this, places as Array<Array<Any>>)
+        val adapter = ItemAdapter(this, placeset)
+        // 3) 리싸이클러뷰 객체 참조 후 어댑터 등록하기
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = adapter
+    }
+
+    fun setPlaces() {
+        /*
+        placelist = arrayOf(Place(places[0][0] as String,
+            places[0][1] as String, places[0][2] as String, places[0][3] as Int
+        ), Place(places[1][0] as String,
+            places[1][1] as String, places[1][2] as String, places[1][3] as Int
+        ))*/
+        placeset = mutableListOf()
+        placeset!!.add(Place(places[0][0] as String,
+            places[0][1] as String, places[0][2] as String, places[0][3] as Int))
+        placeset!!.add(Place(places[1][0] as String,
+            places[1][1] as String, places[1][2] as String, places[1][3] as Int))
+        placeset!!.add(Place(places[2][0] as String,
+            places[2][1] as String, places[2][2] as String, places[2][3] as Int))
+        placeset!!.add(Place(places[3][0] as String,
+            places[3][1] as String, places[3][2] as String, places[3][3] as Int))
+        placeset!!.add(Place(places[4][0] as String,
+            places[4][1] as String, places[0][2] as String, places[4][3] as Int))
     }
 }
