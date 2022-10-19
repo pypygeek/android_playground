@@ -1,6 +1,5 @@
 package com.example.albumapp
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -12,19 +11,17 @@ import com.example.albumapp.data.Album
 class MainActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var adapter: AlbumAdapter? = null
-    private var albumList: MutableList<Album> = mutableListOf() // 비어있는 리스트 객체로 초기화
-
+    private var albumList: MutableList<Album> = mutableListOf()  // 비어있는 리스트 객체로 초기화
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        supportActionBar?.hide()    // 디폴트 액션바는 안 보이게함.
-        setSupportActionBar(toolbar)    // Toolbar를 액션바로 설정
+        supportActionBar?.hide()  // 디폴트 액션바는 안보이게 함
+        setSupportActionBar(toolbar)  // Toolbar를 액션바로 설정
         // 1) RecyclerView reference 받아오기
         recyclerView = findViewById(R.id.recycler_view)
         // 2) Adapter 객체 생성
-        adapter = AlbumAdapter(this, albumList) // Context, 아이템으로 표시할 데이터 집합
+        adapter = AlbumAdapter(this, albumList)  // Context, 아이템으로 표시할 데이터 집합
         // 3) RecyclerView layoutmanager 설정
         recyclerView!!.layoutManager = GridLayoutManager(this, 2)
         // 4) RecyclerView adapter 설정
@@ -66,6 +63,6 @@ class MainActivity : AppCompatActivity() {
         albumList!!.add(a)
         a = Album("Greatest Hits", 17, covers[9])
         albumList!!.add(a)
-        adapter!!.notifyDataSetChanged()    // AlbumAdapter에게 데이터 집합의 변경을 알려서 반영하도록 함.
+        adapter!!.notifyDataSetChanged() // AlbumAdapter에게 데이터 집합의 변경을 알려서 반영하도록 함
     }
 }

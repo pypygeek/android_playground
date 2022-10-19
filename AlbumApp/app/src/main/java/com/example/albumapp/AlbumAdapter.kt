@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.albumapp.data.Album
 
-class AlbumAdapter(val context: Context, val albumList: MutableList<Album>) : RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
+class AlbumAdapter(val context: Context, val albumList: MutableList<Album>) :
+    RecyclerView.Adapter<AlbumAdapter.MyViewHolder>() {
     // 아이템뷰 객체를 생성하기 위한 내부 클래스
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById(R.id.title)
@@ -27,17 +28,17 @@ class AlbumAdapter(val context: Context, val albumList: MutableList<Album>) : Re
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val album = albumList[position]
         holder.title.text = album.name
-        holder.songs.text = album.numOfSongs.toString() + " Songs"
+        holder.songs.text = album.numOfSongs.toString() + " songs"
         holder.thumbnail.setImageResource(album.thumbnail)
         holder.overflow.setOnClickListener { showPopupMenu(holder.overflow, album) }
     }
-    // 리스트로 나영한 아이템 객체의 개수
+    // 리스트로 나열한 아이템 객체의 개수
     override fun getItemCount(): Int {
         return albumList.size
     }
 
-    // popup 메뉴 보이기
-    private fun showPopupMenu(view: View, album: Album){
+    // Popup 메뉴 보이기
+    private fun showPopupMenu(view: View, album: Album) {
         val popup = PopupMenu(context, view)
         val inflater = popup.menuInflater
         inflater.inflate(R.menu.menu_album, popup.menu)
