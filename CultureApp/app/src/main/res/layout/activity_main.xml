@@ -34,8 +34,10 @@
         android:textColor="@color/design_default_color_error"
         android:textSize="60sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="205dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/bookButton"
+        app:layout_constraintEnd_toEndOf="@+id/bookButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieButton" />
 
     <ImageButton
         android:id="@+id/performanceButton"
@@ -57,8 +59,10 @@
         android:textColor="@color/design_default_color_error"
         android:textSize="60sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="57dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/movieButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/movieButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/performance_textView"
@@ -68,7 +72,9 @@
         android:textColor="@color/design_default_color_error"
         android:textSize="60sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="383dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/performanceButton"
+        app:layout_constraintEnd_toEndOf="@+id/performanceButton"
+        app:layout_constraintStart_toStartOf="@+id/performanceButton"
+        app:layout_constraintTop_toBottomOf="@+id/bookButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
